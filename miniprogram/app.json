@@ -4,8 +4,7 @@
     "pages/add/add",
     "pages/user/user",
     "pages/userinfo/userinfo",
-    "pages/myclass/myclass",
-    "pages/myclass"
+    "pages/myclass/myclass"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

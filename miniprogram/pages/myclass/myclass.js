@@ -1,4 +1,5 @@
 // miniprogram/pages/myclass/myclass.js
+import Dialog from 'vant-weapp/dialog/dialog';
 const db = wx.cloud.database()
 var app = getApp()
 Page({
@@ -15,11 +16,22 @@ Page({
    */
   onLoad: function (options) {
     let openid = app.globalData.openid
-    db.collection('userinfo').where({ _openid:openid}).get().then(res => {
+    db.collection('userinfo').where({ _openid:openid}).field({projectName:true}).get().then(res => {
       this.setData({
         projectName: res.data[0].projectName
       })
-    })
+    }).then(res=>{if (this.data.projectName == null) {
+      Dialog.alert({
+        message: '您还没有选课，快去主页看看吧'
+      }).then(() => {
+        wx.navigateBack({
+          delta: 9
+        })
+        // on close
+      });
+    }})
+    console.log(this.data.projectName)
+    
   },
 
   /**

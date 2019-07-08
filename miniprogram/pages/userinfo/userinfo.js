@@ -40,7 +40,8 @@ Page({
       data: {
         name: this.data.name,
         id: this.data.id,
-        type: this.data.type
+        type: this.data.type,
+        projectName:null
       },
       success: res => {
         console.log(res)
