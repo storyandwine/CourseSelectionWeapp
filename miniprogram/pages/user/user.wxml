@@ -1,0 +1,13 @@
+<!--pages/user/user.wxml-->
+<van-cell
+  is-link
+  title="我的信息"
+  link-type="navigateTo"
+  url="../userinfo/userinfo"
+/>
+<van-cell
+  is-link
+  title="我的课程"
+  link-type="navigateTo"
+  url="../myclass/myclass"
+/>

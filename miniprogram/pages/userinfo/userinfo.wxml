@@ -1,0 +1,19 @@
+<van-cell-group>
+  <van-field
+    value="{{ name }}"
+    required
+    label="姓名"
+    placeholder="{{name}}"
+    bind:input="setName"
+  />
+  <van-field
+    value="{{ id }}"
+    label="学工号"
+    required
+    placeholder="{{id}}"
+    maxlength = "13"
+    bind:input="setId"
+  />
+  <van-picker columns="{{ columns }}" default-index="{{ type }}" bind:change="onChange" />
+  <van-button square block type="info"  bindtap="updateInfo" disabled="{{disabled}}">完善信息</van-button>
+</van-cell-group>

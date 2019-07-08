@@ -1,0 +1,2 @@
+<!--miniprogram/pages/myclass/myclass.wxml-->
+<van-cell title="{{projectName}}" value="" size="large" label="恭喜您已经选上了" />

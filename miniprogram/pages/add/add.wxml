@@ -1,2 +1,20 @@
 <!--pages/add/add.wxml-->
-<van-button square type="primary" block bind:click="addData">新增数据</van-button>
+<van-cell-group>
+  <van-field
+    value="{{ projectName }}"
+    required
+    label="项目名字"
+    placeholder="请输入项目名称"
+    bind:input="onChange"
+  />
+  <van-field
+    value="{{ desc }}"
+    label="项目简介"
+    type="textarea"
+    placeholder="请输入项目简介"
+    autosize
+    bind:input="desc"
+  />
+  <van-button square block type="info"  bindtap="submit">开课</van-button>
+</van-cell-group>
+<van-popup show="{{ show }}" bind:close="onClose">开课成功</van-popup>

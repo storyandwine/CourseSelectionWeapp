@@ -1,6 +1,7 @@
-<block wx:for="{{user}}">
-<van-card
-  userName="{{item.userName}}"
-  className="{{item.className}}"
-/>
+<block wx:for="{{projects}}">
+  <van-card num="{{item.num}}" desc="{{item.desc}}" title="{{item.projectName}}" thumb="https://ws1.sinaimg.cn/thumbnail/005VVb5fgy1g4qzsoa718j305k05k0sm.jpg">
+    <view slot="footer">
+      <van-button id ="{{item.projectName}}" size="mini" bind:click="select" >选课</van-button>
+    </view>
+  </van-card>
 </block>
