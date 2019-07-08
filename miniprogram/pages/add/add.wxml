@@ -6,6 +6,7 @@
     label="项目名字"
     placeholder="请输入项目名称"
     bind:input="onChange"
+    clearable	=true
   />
   <van-field
     value="{{ desc }}"
@@ -14,6 +15,16 @@
     placeholder="请输入项目简介"
     autosize
     bind:input="desc"
+    clearable	=true
+  />
+  <van-field\
+    label = "课程容量"
+    required
+    value="{{ num }}"
+    placeholder="请输入课程容量"
+    bind:input="setNum"
+    type= "number"
+    clearable	=true
   />
   <van-button square block type="info"  bindtap="submit">开课</van-button>
 </van-cell-group>
