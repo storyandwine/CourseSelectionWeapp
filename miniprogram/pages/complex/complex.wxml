@@ -1,0 +1,10 @@
+<van-button type="primary">主要按钮</van-button>
+<van-button type="warning">警告按钮</van-button>
+<van-button type="danger">危险按钮</van-button>
+<van-card
+  num="2"
+  price="2.00"
+  desc="描述信息"
+  title="商品标题"
+  thumb="{{ imageURL }}"
+/>
