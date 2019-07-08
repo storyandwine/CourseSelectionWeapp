@@ -4,7 +4,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    appId: "wx8abaf00ee8c3202e",
+    extraData : {
+      id: "66180",}
+  },
+  tucao:function(event){
+    wx.navigateToMiniProgram({
+      appId: this.data.appId,
+      extraData:this.data.extraData,
+      version:"release"
+    })
   },
 
   /**
