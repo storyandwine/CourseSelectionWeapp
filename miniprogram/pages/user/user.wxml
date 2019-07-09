@@ -1,4 +1,11 @@
 <!--pages/user/user.wxml-->
+ <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">  
+      <block wx:for="{{pictures}}" wx:for-index="index">  
+        <swiper-item>  
+          <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
+        </swiper-item>  
+      </block>  
+    </swiper> 
 <van-cell is-link title="我的信息" link-type="navigateTo" url="../userinfo/userinfo" />
 <van-cell is-link title="我的课程" link-type="navigateTo" url="../myclass/myclass" />
 <van-cell is-link title="吐槽反馈" bind:click	='tucao' />

@@ -61,7 +61,7 @@ Page({
         })
       }else{
         Dialog.alert({
-          message: '您暂时没用开课的权限，如有需要请与管理员联系'
+          message: '您暂时没有开课的权限，如有需要请与管理员联系'
         }).then(() => {
           this.setData({
             disabled:true

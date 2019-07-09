@@ -1,3 +1,4 @@
+import Dialog from 'vant-weapp/dialog/dialog';
 const db = wx.cloud.database()
 var app = getApp()
 Page({
@@ -17,7 +18,16 @@ Page({
         projectName
       },
       complete: res => {
-        console.log('callFunction test result: ', res)
+        if(res.result.stats.updated==0){
+          Dialog.alert({
+            message: '很抱歉当前课程已经没有余量了，您未选上，请重新选择'
+          })
+        }
+        else{
+          Dialog.alert({
+            message: '恭喜您，选课成功'
+          })
+        }
       }
     })
   },

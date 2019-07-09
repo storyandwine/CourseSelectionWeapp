@@ -6,7 +6,12 @@ Page({
   data: {
     appId: "wx8abaf00ee8c3202e",
     extraData : {
-      id: "66180",}
+      id: "66180",},
+      pictures: [
+        { url: 'https://ws1.sinaimg.cn/large/005VVb5fgy1g4tdpgfed9j30b405z3zm.jpg' },
+        { url: 'https://ws1.sinaimg.cn/large/005VVb5fgy1g4tdw9v2azj30b405zmyi.jpg' },
+        { url: 'https://ws1.sinaimg.cn/large/005VVb5fgy1g4tdhubea0j30b405yq2w.jpg' },
+    ] 
   },
   tucao:function(event){
     wx.navigateToMiniProgram({

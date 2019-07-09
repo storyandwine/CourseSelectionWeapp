@@ -1,3 +1,4 @@
+<van-dialog id="van-dialog" />
 <block wx:for="{{projects}}">
   <van-card price="{{item.num}}" desc="{{item.keyWords}}" title="{{item.projectName}}" currency="余量：" thumb="https://ws1.sinaimg.cn/thumbnail/005VVb5fgy1g4qzsoa718j305k05k0sm.jpg"
   tag="{{item.teacher}}">

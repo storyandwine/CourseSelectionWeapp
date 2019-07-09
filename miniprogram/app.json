@@ -29,7 +29,7 @@
         "pagePath": "pages/add/add",
         "iconPath": "image/32.png",
         "selectedIconPath": "image/31.png",
-        "text": "发布"
+        "text": "开课"
       },
       {
         "pagePath": "pages/user/user",
