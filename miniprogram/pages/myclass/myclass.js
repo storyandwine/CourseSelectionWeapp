@@ -21,11 +21,11 @@ Page({
         data: {
           projectName:this.data.projectName,
         },
-        complete: res =>{
-          console.log(res)
+        success: res =>{
           wx.navigateBack({
             delta:1
           })
+          app.globalData.disSelect = false
         }
       })
     }).catch(() => {
@@ -36,6 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.globalData.disSelect = null
     let openid = app.globalData.openid
     db.collection('userinfo').where({ _openid:openid}).field({projectName:true}).get().then(res => {
       this.setData({

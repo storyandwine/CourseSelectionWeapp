@@ -7,42 +7,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    page: 0
+    page: 0,
+    disabled: false
   },
   select: function(event) {
     let projectName = event.target.id
-    db.collection('userinfo').field({
-      projectName: true
-    }).where({
-      _openid: app.globalData.openid
-    }).get().then(res => {
-      if (res.data[0].projectName == null) {
-        wx.cloud.callFunction({
-          name: "selectCourse",
-          data: {
-            openid: app.globalData.openid,
-            projectName
-          },
-          complete: res => {
-            console.log(res)
-            if (res.result.stats.updated == 0) {
-              Dialog.alert({
-                message: '很抱歉当前课程已经没有余量了，您未选上，请重新选择'
-              })
-            } else {
-              Dialog.alert({
-                message: '恭喜您，选课成功'
-              })
-            }
-          }
-        })
-      } else {
+    wx.cloud.callFunction({
+      name: "selectCourse",
+      data: {
+        projectName,
+        openid: app.globalData.openid
+      },
+    }).then(res => {
+      if (res.result.stats.updated == 0) {
         Dialog.alert({
-          message: '每人只能选一个项目，您已经选过了'
+          message: '很抱歉当前课程已经没有余量了，您未选上，请重新选择'
+        })
+      } else{
+        wx.cloud.callFunction({
+          name: "addCourseToUser",
+          data: {
+            projectName,
+            openid: app.globalData.openid
+          },
+          success: res1 => {
+            Dialog.alert({
+              message: '恭喜您选课成功'
+            })
+            this.setData({
+              disabled: true
+            })
+          }
         })
       }
     })
-
   },
 
   /**
@@ -53,6 +51,15 @@ Page({
       this.setData({
         projects: res.data
       })
+    })
+    db.collection('userinfo').field({
+      projectName: true
+    }).get().then(res => {
+      if (res.data[0].projectName != null) {
+        this.setData({
+          disabled: true
+        })
+      }
     })
   },
 
@@ -89,6 +96,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
+    if(app.globalData.disSelect!=null){
+      this.setData({
+        disabled: app.globalData.disSelect
+      })
+    }
     this.setData({
       page: 0
     })
@@ -113,8 +125,6 @@ Page({
       this.setData({
         projects: old_data.concat(new_data),
         page: page
-      }, res => {
-        console.log(res)
       })
     })
   },
