@@ -29,9 +29,14 @@ Page({
         })
         // on close
       });
-    }})
-    console.log(this.data.projectName)
-    
+    }}).then(res =>{
+      db.collection('projects').where({projectName:this.data.projectName}).get().then(res=>{
+        this.setData({
+          desc:res.data[0].desc,
+          teacher:res.data[0].teacher
+        })
+      })
+    })
   },
 
   /**

@@ -2,11 +2,3 @@
 <van-cell is-link title="我的信息" link-type="navigateTo" url="../userinfo/userinfo" />
 <van-cell is-link title="我的课程" link-type="navigateTo" url="../myclass/myclass" />
 <van-cell is-link title="吐槽反馈" bind:click	='tucao' />
-<!-- <navigator
-    target="miniProgram"
-    open-type="navigate"
-    app-id="{{ appId }}"
-    extra-data="{{ extraData }}"
-    version="release">
-    吐槽反馈
-</navigator> -->

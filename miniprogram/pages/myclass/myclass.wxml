@@ -1,3 +1,8 @@
 <!--miniprogram/pages/myclass/myclass.wxml-->
-<van-cell title="{{projectName}}" value="" size="large" label="恭喜您已经选上了" />
+<!-- <van-cell title="{{projectName}}" value="" size="large" label="恭喜您已经选上了" /> -->
 <van-dialog id="van-dialog" />
+<van-cell-group>
+  <van-cell title="项目名称" value="{{projectName}}" />
+  <van-cell title="项目简介" value="{{desc}}" />
+  <van-cell title="指导老师" value="{{teacher}}" />
+</van-cell-group>
