@@ -10,7 +10,28 @@ Page({
   data: {
 
   },
-
+  backCourse(event){
+    Dialog.confirm({
+      title: '退选确认',
+      message: '您真的决定退掉这个吗？错过了就不一定能再遇见了哦'
+    }).then(() => {
+      // on confirm
+      wx.cloud.callFunction({
+        name:'backCourse',
+        data: {
+          projectName:this.data.projectName,
+        },
+        complete: res =>{
+          console.log(res)
+          wx.navigateBack({
+            delta:1
+          })
+        }
+      })
+    }).catch(() => {
+      // on cancel
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -87,4 +108,5 @@ Page({
   onShareAppMessage: function () {
 
   }
+
 })

@@ -6,3 +6,4 @@
   <van-cell title="指导老师" value="{{teacher}}" />
   <van-cell title="项目简介" value="" size="large" label="{{desc}}" />
 </van-cell-group>
+<van-button type="info"  block bindtap='backCourse'>退选</van-button>

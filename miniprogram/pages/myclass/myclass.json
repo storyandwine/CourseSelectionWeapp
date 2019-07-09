@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-cell": "vant-weapp/cell",
     "van-cell-group": "vant-weapp/cell-group",
-    "van-dialog": "vant-weapp/dialog"
+    "van-dialog": "vant-weapp/dialog",
+    "van-button": "vant-weapp/button"
   }
 }

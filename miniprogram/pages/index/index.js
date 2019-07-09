@@ -7,38 +7,51 @@ Page({
    * 页面的初始数据
    */
   data: {
-    page:0
+    page: 0
   },
-  select:function(event){
+  select: function(event) {
     let projectName = event.target.id
-    wx.cloud.callFunction({
-      name:"selectCourse",
-      data:{
-        openid:app.globalData.openid,
-        projectName
-      },
-      complete: res => {
-        if(res.result.stats.updated==0){
-          Dialog.alert({
-            message: '很抱歉当前课程已经没有余量了，您未选上，请重新选择'
-          })
-        }
-        else{
-          Dialog.alert({
-            message: '恭喜您，选课成功'
-          })
-        }
+    db.collection('userinfo').field({
+      projectName: true
+    }).where({
+      _openid: app.globalData.openid
+    }).get().then(res => {
+      if (res.data[0].projectName == null) {
+        wx.cloud.callFunction({
+          name: "selectCourse",
+          data: {
+            openid: app.globalData.openid,
+            projectName
+          },
+          complete: res => {
+            console.log(res)
+            if (res.result.stats.updated == 0) {
+              Dialog.alert({
+                message: '很抱歉当前课程已经没有余量了，您未选上，请重新选择'
+              })
+            } else {
+              Dialog.alert({
+                message: '恭喜您，选课成功'
+              })
+            }
+          }
+        })
+      } else {
+        Dialog.alert({
+          message: '每人只能选一个项目，您已经选过了'
+        })
       }
     })
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    db.collection('projects').get().then(res=>{
+  onLoad: function(options) {
+    db.collection('projects').get().then(res => {
       this.setData({
-        projects:res.data
+        projects: res.data
       })
     })
   },
@@ -46,42 +59,42 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-    
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-    
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.setData({
-      page:0
+      page: 0
     })
-    db.collection('projects').orderBy('projectName','asc').get().then(res => {
+    db.collection('projects').orderBy('projectName', 'asc').get().then(res => {
       this.setData({
         projects: res.data
-      },res=>{
+      }, res => {
         console.log("数据更新完成")
         wx.stopPullDownRefresh()
       })
@@ -91,14 +104,14 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-    let page = this.data.page +20
+  onReachBottom: function() {
+    let page = this.data.page + 20
     db.collection('projects').skip(page).get().then(res => {
       let new_data = res.data
       let old_data = this.data.projects
       this.setData({
         projects: old_data.concat(new_data),
-        page:page
+        page: page
       }, res => {
         console.log(res)
       })
@@ -108,7 +121,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    
+  onShareAppMessage: function() {
+
   }
 })
