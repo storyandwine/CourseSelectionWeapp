@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-button": "vant-weapp/button",
     "van-field": "vant-weapp/field",
-    "van-popup": "vant-weapp/popup"
+    "van-popup": "vant-weapp/popup",
+    "van-dialog": "vant-weapp/dialog"
   }
 }

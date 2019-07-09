@@ -1,4 +1,5 @@
 // pages/add/add.js
+import Dialog from 'vant-weapp/dialog/dialog';
 const db = wx.cloud.database()
 const ProjectsCollection = db.collection('projects')
 const userCollection = db.collection('userinfo')
@@ -11,7 +12,8 @@ Page({
   data: {
     projectName: "",
     desc: "",
-    show:false
+    show:false,
+    disabled:false,
   },
   onChange(event) {
     // event.detail 为当前输入的值
@@ -24,6 +26,9 @@ Page({
   setNum(event){
     this.setData({num:parseInt(event.detail)})
   },
+  keyWords(event){
+    this.setData({keyWords:event.detail})
+  },
   onClose() {
     this.setData({ show: false });
   },
@@ -33,7 +38,8 @@ Page({
         projectName: this.data.projectName,
         teacher: this.data.userName,
         desc: this.data.desc,
-        num:this.data.num
+        num:this.data.num,
+        keyWords:this.data.keyWords
       },
       success:res=>{
         this.setData({ show: true });
@@ -49,9 +55,21 @@ Page({
     let openid = app.globalData.openid
     userCollection.where({ _openid: openid }).get().then(res => {
       console.log(res)
-      this.setData({
-        userName: res.data[0].name
-      })
+      if(res.data[0].type==4){
+        this.setData({
+          userName: res.data[0].name
+        })
+      }else{
+        Dialog.alert({
+          message: '您暂时没用开课的权限，如有需要请与管理员联系'
+        }).then(() => {
+          this.setData({
+            disabled:true
+          })
+          // on close
+        })
+      }
+      
     })
   },
 })
