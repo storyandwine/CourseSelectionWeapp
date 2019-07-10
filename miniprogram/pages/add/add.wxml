@@ -36,6 +36,6 @@
     bind:input="desc"
     clearable	=true
   />
+  <van-button square block type="info"  bindtap="upload" >上传文档</van-button>
   <van-button square block type="info"  bindtap="submit" disabled="{{disabled}}">开课</van-button>
 </van-cell-group>
-<van-popup show="{{ show }}" bind:close="onClose">开课成功</van-popup>

@@ -4,6 +4,7 @@ const db = wx.cloud.database()
 const ProjectsCollection = db.collection('projects')
 const userCollection = db.collection('userinfo')
 var app= getApp()
+var that = this
 Page({
 
   /**
@@ -14,6 +15,31 @@ Page({
     desc: "",
     show:false,
     disabled:false,
+  },
+  upload(event) {
+    var that = this
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'file',
+      success(res) {
+        console.log(res, " :res")
+        const tempFiles = res.tempFiles[0]
+        wx.cloud.uploadFile({
+          cloudPath: tempFiles.name,
+          filePath: tempFiles.path, // 文件路径
+        }).then(res =>{
+          console.log(res)
+          // get resource ID
+          that.setData({
+            fileID: res.fileID
+          })
+          Dialog.alert({
+            message: '您已成功上传文档，感谢您为了学生的付出，辛苦啦'
+          })
+
+        })
+      }
+    })
   },
   onChange(event) {
     // event.detail 为当前输入的值
@@ -29,9 +55,7 @@ Page({
   keyWords(event){
     this.setData({keyWords:event.detail})
   },
-  onClose() {
-    this.setData({ show: false });
-  },
+
   submit:function(event){
     ProjectsCollection.add({
       data: {
@@ -39,12 +63,13 @@ Page({
         teacher: this.data.userName,
         desc: this.data.desc,
         num:this.data.num,
-        keyWords:this.data.keyWords
+        keyWords:this.data.keyWords,
+        fileID:this.data.fileID
       },
       success:res=>{
-        this.setData({ show: true });
-        onClose();
-        console.log(res)
+        Dialog.alert({
+          message: '开课成功'
+        })
       }
     })
   },

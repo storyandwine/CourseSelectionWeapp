@@ -10,6 +10,27 @@ Page({
     page: 0,
     disabled: false
   },
+  getpdf(event) {
+    wx.cloud.downloadFile({
+      fileID: event.target.id,
+      success: res => {
+        console.log(res)
+        wx.openDocument({
+          filePath: res.tempFilePath,
+          success: (res) => {
+            console.log('读取成功', res)
+          },
+          fail: (err) => {
+            console.log('读取失败', err)
+            Dialog.alert({
+              message: '读取失败，如有需要请直接联系老师'
+            })
+          }
+        })
+
+      }
+    })
+  },
   select: function(event) {
     let projectName = event.target.id
     wx.cloud.callFunction({

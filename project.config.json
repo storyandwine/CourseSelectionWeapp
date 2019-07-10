@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -82,6 +82,13 @@
 					"id": -1,
 					"name": "myclass",
 					"pathName": "pages/myclass/myclass",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "upload",
+					"pathName": "pages/upload/upload",
 					"scene": null
 				}
 			]
