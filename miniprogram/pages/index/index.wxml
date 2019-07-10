@@ -2,7 +2,7 @@
 <block wx:for="{{projects}}">
   <van-card price="{{item.num}}" desc="{{item.keyWords}}" title="{{item.projectName}}" currency="余量：" thumb="https://ws1.sinaimg.cn/thumbnail/005VVb5fgy1g4qzsoa718j305k05k0sm.jpg" tag="{{item.teacher}}">
     <view slot="footer">
-      <van-button id="{{item.fileID}}" size="mini" bind:click="getpdf">查看项目文档</van-button>
+      <van-button id="{{item.fileID}}" size="mini" bind:click="getpdf">项目文档</van-button>
       <van-button id="{{item.projectName}}" size="mini" disabled="{{disabled}}" bind:click="select">选课</van-button>
     </view>
   </van-card>
