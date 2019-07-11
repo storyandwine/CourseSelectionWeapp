@@ -15,15 +15,15 @@ git下载本仓库，在微信开发者工具中导入即可，需要填写自�
 
 ## 数据流图
 
-![img](file:///C:/Users/YUZHOU~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif)
+![img](https://ws1.sinaimg.cn/large/005VVb5fgy1g4vmx9ymd9j30d402vdfn.jpg)
 
  
 
-![img](file:///C:/Users/YUZHOU~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)
+![img](https://ws1.sinaimg.cn/large/005VVb5fgy1g4vmy13khlj30is0fc74g.jpg)
 
 ## 数据字典
 
- ![img](file:///C:\Users\yuzhouxin\Documents\Tencent Files\1727718977\Image\Group\9@B9OPX3@C]FRO}2}@D13RQ.png)
+ ![img](https://ws1.sinaimg.cn/large/005VVb5fgy1g4vmyvryqhj30i9090aa0.jpg)
 
 ## index模块设计说明
 
