@@ -33,6 +33,9 @@ Page({
   },
   select: function(event) {
     let projectName = event.target.id
+    wx.showLoading({
+      title: '选课中',
+    })
     wx.cloud.callFunction({
       name: "selectCourse",
       data: {
@@ -41,6 +44,7 @@ Page({
       },
     }).then(res => {
       if (res.result.stats.updated == 0) {
+        wx.hideLoading()
         Dialog.alert({
           message: '很抱歉当前课程已经没有余量了，您未选上，请重新选择'
         })
@@ -52,6 +56,7 @@ Page({
             openid: app.globalData.openid
           },
           success: res1 => {
+            wx.hideLoading()
             Dialog.alert({
               message: '恭喜您选课成功'
             })

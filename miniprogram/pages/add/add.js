@@ -24,6 +24,9 @@ Page({
       success(res) {
         console.log(res, " :res")
         const tempFiles = res.tempFiles[0]
+        wx.showLoading({
+          title: '正在上传',
+        })
         wx.cloud.uploadFile({
           cloudPath: tempFiles.name,
           filePath: tempFiles.path, // 文件路径
@@ -33,10 +36,10 @@ Page({
           that.setData({
             fileID: res.fileID
           })
+          wx.hideLoading()
           Dialog.alert({
             message: '您已成功上传文档，感谢您为了学生的付出，辛苦啦'
           })
-
         })
       }
     })
