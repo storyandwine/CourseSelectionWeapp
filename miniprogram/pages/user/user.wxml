@@ -1,4 +1,5 @@
 <!--pages/user/user.wxml-->
+<van-dialog id="van-dialog" />
  <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">  
       <block wx:for="{{pictures}}" wx:for-index="index">  
         <swiper-item>  
@@ -9,3 +10,7 @@
 <van-cell is-link title="我的信息" link-type="navigateTo" url="../userinfo/userinfo" />
 <van-cell is-link title="我的课程" link-type="navigateTo" url="../myclass/myclass" />
 <van-cell is-link title="吐槽反馈" bind:click	='tucao' />
+<van-cell is-link title="Github开源地址" bind:click	='github' />
+<view class="footer">
+    @2019 于宙鑫 孟妍 邹琦
+  </view>

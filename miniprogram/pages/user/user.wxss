@@ -6,4 +6,11 @@
 .swiper image {
   height: 100%;
   width: 100%;
+  
+}
+.footer{
+  width: 100%;   font-size: 12px;
+  text-align: center;
+  color: #C6C6C6;
+  padding-top: 30rpx
 }

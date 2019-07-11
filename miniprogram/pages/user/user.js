@@ -1,3 +1,4 @@
+import Dialog from 'vant-weapp/dialog/dialog';
 Page({
 
   /**
@@ -12,6 +13,21 @@ Page({
         { url: 'https://ws1.sinaimg.cn/large/005VVb5fgy1g4tdw9v2azj30b405zmyi.jpg' },
         { url: 'https://ws1.sinaimg.cn/large/005VVb5fgy1g4tdhubea0j30b405yq2w.jpg' },
     ] 
+  },
+  github:function(event){
+    wx.setClipboardData({
+      data: 'https://github.com/storyandwine/CourseSelectionWeapp',
+      success(res) {
+        wx.getClipboardData({
+          success(res) {
+            Dialog.alert({
+              message: 'Github开源地址已经复制，请粘贴到浏览器打开'
+            })
+            console.log(res.data) // data
+          }
+        })
+      }
+    })
   },
   tucao:function(event){
     wx.navigateToMiniProgram({
